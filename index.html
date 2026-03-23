@@ -530,55 +530,55 @@
         border-radius:14px;
         box-shadow:0 4px 14px rgba(0,0,0,0.08);
     ">
-        <form>
-            <label data-i18n="contact_name">Name</label>
-            <input type="text" style="
-                width:100%;
-                padding:12px;
-                margin:10px 0 20px 0;
-                border-radius:8px;
-                border:1px solid var(--muted);
-                background:var(--bg);
-                color:var(--text);
-            ">
+<form action="mailto:VOTRE-EMAIL@exemple.com" method="POST" enctype="text/plain">
+    <label data-i18n="contact_name">Name</label>
+    <input name="Name" type="text" style="
+        width:100%;
+        padding:12px;
+        margin:10px 0 20px 0;
+        border-radius:8px;
+        border:1px solid var(--muted);
+        background:var(--bg);
+        color:var(--text);
+    ">
 
-            <label data-i18n="contact_email">E-Mail</label>
-            <input type="email" style="
-                width:100%;
-                padding:12px;
-                margin:10px 0 20px 0;
-                border-radius:8px;
-                border:1px solid var(--muted);
-                background:var(--bg);
-                color:var(--text);
-            ">
+    <label data-i18n="contact_email">E-Mail</label>
+    <input name="Email" type="email" style="
+        width:100%;
+        padding:12px;
+        margin:10px 0 20px 0;
+        border-radius:8px;
+        border:1px solid var(--muted);
+        background:var(--bg);
+        color:var(--text);
+    ">
 
-            <label data-i18n="contact_message">Nachricht</label>
-            <textarea style="
-                width:100%;
-                padding:12px;
-                height:120px;
-                margin:10px 0 20px 0;
-                border-radius:8px;
-                border:1px solid var(--muted);
-                background:var(--bg);
-                color:var(--text);
-            "></textarea>
+    <label data-i18n="contact_message">Nachricht</label>
+    <textarea name="Message" style="
+        width:100%;
+        padding:12px;
+        height:120px;
+        margin:10px 0 20px 0;
+        border-radius:8px;
+        border:1px solid var(--muted);
+        background:var(--bg);
+        color:var(--text);
+    "></textarea>
 
-            <button type="submit" style="
-                padding:12px 25px;
-                background:var(--accent);
-                color:white;
-                border:none;
-                border-radius:8px;
-                font-weight:600;
-                cursor:pointer;
-                transition:0.3s;
-            " data-i18n="contact_send">
-                Senden
-            </button>
-        </form>
-    </div>
+    <button type="submit" style="
+        padding:12px 25px;
+        background:var(--accent);
+        color:white;
+        border:none;
+        border-radius:8px;
+        font-weight:600;
+        cursor:pointer;
+        transition:0.3s;
+    " data-i18n="contact_send">
+        Senden
+    </button>
+</form>
+  </div>
 </section>
 
 <!-- FOOTER -->
