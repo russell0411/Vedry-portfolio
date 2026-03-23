@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio – Russell Vedry Ngadjui</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f0f2f5;
+            --card-bg: #ffffff;
+            --text: #333333;
+            --accent: #1a73e8;
+            --accent-dark: #155fc0;
+            --muted: #777777;
+        }
+
+        body.dark {
+            --bg: #0f172a;
+            --card-bg: #111827;
+            --text: #e5e7eb;
+            --accent: #3b82f6;
+            --accent-dark: #2563eb;
+            --muted: #9ca3af;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: var(--accent);
+            color: white;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            margin-bottom: 20px;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            text-align: center;
+            margin: 0 0 10px 0;
+        }
+
+        .sidebar p {
+            margin: 4px 0;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .sidebar .small-muted {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .download-btn, .toggle-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 18px;
+            background: white;
+            color: var(--accent);
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.3s ease, color 0.3s ease;
+        }
+
+        .download-btn:hover, .toggle-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .toggle-btn {
+            margin-top: 10px;
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.7);
+        }
+
+        .content {
+            margin-left: 340px;
+            padding: 40px 30px 60px 30px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: var(--accent);
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 14px;
+            margin-top: 15px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+            animation: fadeInUp 0.4s ease;
+        }
+
+        .project-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .muted {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .tag-row {
+            margin-top: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(26,115,232,0.08);
+            color: var(--accent);
+            font-size: 11px;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+
+        body.dark .tag {
+            background: rgba(59,130,246,0.15);
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 900px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 20px;
+            }
+            .sidebar img {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 0;
+            }
+            .sidebar h1 {
+                font-size: 18px;
+            }
+            .sidebar p {
+                font-size: 11px;
+            }
+            .content {
+                margin-left: 0;
+                padding: 20px 15px 40px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <!-- Remplace l'URL ci-dessous par le lien de ta vraie photo -->
+    <img src="https://via.placeholder.com/140" alt="Profilfoto">
+
+    <div style="text-align:center;">
+        <h1>Russell Vedry<br>Ngadjui Tchualeu</h1>
+        <p><strong>Werkstudent Maschinenbau</strong></p>
+        <p class="small-muted">Elektrotechnik · CAD · Qualitätsprüfung</p>
+        <p>Darmstadt, Deutschland</p>
+        <p>Email: <strong>russell.ngadjui@yahoo.com</strong></p>
+        <p>LinkedIn: <strong>Dein Profil</strong></p>
+    </div>
+
+    <a class="download-btn" href="CV.pdf" download>📄 CV herunterladen</a>
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark / Light</button>
+</div>
+
+<div class="content">
+
+    <h2>Über mich</h2>
+    <div class="card">
+        <p>
+            Maschinenbaustudent im 4. Semester an der Hochschule Darmstadt mit Erfahrung in CAD, 
+            Elektrotechnik, Qualitätsprüfung und Laborversuchen an elektrischen Maschinen.
+            Sorgfältig, strukturiert und lernbereit, mit großem Interesse an Elektromotoren 
+            und industrieller Antriebstechnik.
+        </p>
+        <div class="tag-row">
+            <span class="tag">Maschinenbau</span>
+            <span class="tag">Elektrotechnik</span>
+            <span class="tag">Qualität</span>
+            <span class="tag">Werkstudent</span>
+        </div>
+    </div>
+
+    <h2>Berufserfahrung</h2>
+    <div class="card">
+        <p class="project-title">Volkswagen – Qualitätsprüfer</p>
+        <p class="muted">04/2024 – 06/2024 · Braunschweig</p>
+        <p>Qualitätsprüfungen in der Serienfertigung, Erkennen und Dokumentieren von Prozessabweichungen, Arbeiten nach klaren Prüf- und Fertigungsrichtlinien, Sicherstellung der Bauteilqualität im Schichtbetrieb.</p>
+
+        <hr style="border:none;border-top:1px solid rgba(0,0,0,0.06);margin:15px 0;">
+
+        <p class="project-title">Maui Jim – Qualitätskontrolle</p>
+        <p class="muted">05/2024 – 06/2024 · Braunschweig</p>
+        <p>Qualitätskontrolle von Brillenkomponenten, Prüfung nach definierten Vorgaben, präzise und zuverlässige Arbeitsweise.</p>
+    </div>
+
+    <h2>Projekte</h2>
+    <div class="card">
+        <p class="project-title">Laborversuch Asynchronmaschine</p>
+        <p class="muted">Hochschule Darmstadt</p>
+        <p>Drehzahl-Drehmoment-Kennlinien, Wirk- und Blindleistungsmessung, Betrieb mit Frequenzumrichter, Analyse des Maschinenverhaltens unter verschiedenen Betriebsarten.</p>
+
+        <p class="project-title" style="margin-top:15px;">Laborversuch Gleichstrommaschine</p>
+        <p class="muted">Hochschule Darmstadt</p>
+        <p>Leerlauf-, Betriebs- und mechanische Kennlinien, Bestimmung von Anker- und Feldwiderstand, Untersuchung von Feldschwächung und Feldstärkung.</p>
+
+        <p class="project-title" style="margin-top:15px;">CAD-Baugruppe Koppelgetriebe</p>
+        <p class="muted">CAD-Projekt</p>
+        <p>Erstellung aller Teile aus einer Stückliste, Zusammenbau mit Normteilen, saubere technische Dokumentation.</p>
+    </div>
+
+    <h2>Kenntnisse</h2>
+    <div class="card">
+        <p><strong>CAD:</strong> SolidWorks, Fusion 360, Catia</p>
+        <p><strong>FEM:</strong> Ansys (Grundlagen)</p>
+        <p><strong>Programmierung:</strong> MATLAB/Simulink (Grundlagen), Python (Grundlagen)</p>
+        <p><strong>IT:</strong> Microsoft Word, Excel, PowerPoint</p>
+        <p><strong>Soft Skills:</strong> Analytisches Denkvermögen, technisches Verständnis, selbständige, strukturierte und sorgfältige Arbeitsweise.</p>
+    </div>
+
+    <h2>Stärken & Schwächen</h2>
+    <div class="card">
+        <p class="project-title">Stärken</p>
+        <ul>
+            <li>Sehr schnelle Auffassungsgabe</li>
+            <li>Hohe Anpassungsfähigkeit</li>
+            <li>Strukturierte, analytische und sorgfältige Arbeitsweise</li>
+        </ul>
+        <p class="project-title" style="margin-top:10px;">Schwäche</p>
+        <p>Ich neige manchmal dazu, meine eigenen Fähigkeiten zu unterschätzen – arbeite jedoch aktiv daran, mein Selbstvertrauen zu stärken und Verantwortung zu übernehmen.</p>
+    </div>
+
+    <h2>Ziele & Motivation</h2>
+    <div class="card">
+        <p>
+            Perspektivisch strebe ich einen Master im Bereich Wirtschaftsingenieurwesen mit Vertiefung Elektrotechnik 
+            oder im Bereich Elektrische Energietechnik an. 
+            Daher ist es mir wichtig, bereits jetzt praktische Erfahrungen im elektrotechnischen Umfeld zu sammeln, 
+            insbesondere im Bereich Elektromotoren und industrieller Antriebstechnik.
+        </p>
+    </div>
+
+    <h2>Kontakt</h2>
+    <div class="card">
+        <p>Email: <strong>russell.ngadjui@yahoo.com</strong></p>
+        <p>LinkedIn: <strong>Dein Profil-Link hier</strong></p>
+        <p>Ort: Darmstadt, Deutschland</p>
+    </div>
+
+    <footer>
+        © 2026 – Portfolio von Russell Vedry Ngadjui
+    </footer>
+
+</div>
+
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark');
+    }
+</script>
+
+</body>
+</html>
