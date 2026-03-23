@@ -239,6 +239,68 @@
 .btn.secondary:hover {
     background: rgba(255,255,255,0.2);
 }
+
+        /* PROJECTS SECTION */
+.projects {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.projects h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: #0A1A2F;
+}
+
+/* FILTRES */
+.project-filters {
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 8px;
+    border: none;
+    background: #e0e0e0;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: #1E90FF;
+    color: white;
+}
+
+/* GRID */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.project-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
     </style>
 </head>
 
@@ -254,6 +316,64 @@
             <a href="CV.pdf" class="btn primary">Télécharger CV</a>
             <a href="#projects" class="btn secondary">Voir mes projets</a>
         </div>
+    </div>
+</section>
+
+    <!-- PROJECTS SECTION -->
+<section id="projects" class="projects">
+    <h2>Mes Projets</h2>
+
+    <!-- FILTRES / CATÉGORIES -->
+    <div class="project-filters">
+        <button class="filter-btn active" data-category="all">Tous</button>
+        <button class="filter-btn" data-category="cad">CAD / Conception</button>
+        <button class="filter-btn" data-category="ansys">Simulation ANSYS</button>
+        <button class="filter-btn" data-category="matlab">MATLAB / Simulink</button>
+        <button class="filter-btn" data-category="python">Python</button>
+    </div>
+
+    <div class="project-grid">
+
+        <!-- PROJETS CAD -->
+        <div class="project-card" data-category="cad">
+            <img src="images/cad1.png" alt="CAD Project">
+            <h3>Modélisation 3D — SolidWorks</h3>
+            <p>Conception d’un support mécanique complet avec assemblage et mise en plan.</p>
+        </div>
+
+        <div class="project-card" data-category="cad">
+            <img src="images/cad2.png" alt="CAD Project 2">
+            <h3>Fusion 360 — Mécanisme articulé</h3>
+            <p>Étude cinématique et modélisation d’un mécanisme articulé.</p>
+        </div>
+
+        <!-- PROJETS ANSYS -->
+        <div class="project-card" data-category="ansys">
+            <img src="images/amsys_mesh.png" alt="Mesh ANSYS">
+            <h3>Simulation ANSYS — Maillage</h3>
+            <p>Analyse du maillage pour garantir une précision optimale.</p>
+        </div>
+
+        <div class="project-card" data-category="ansys">
+            <img src="images/amsys_max_stress.png" alt="Max Stress">
+            <h3>Simulation ANSYS — Contrainte maximale</h3>
+            <p>Étude des zones critiques et optimisation de la géométrie.</p>
+        </div>
+
+        <!-- MATLAB -->
+        <div class="project-card" data-category="matlab">
+            <img src="images/matlab.png" alt="MATLAB Project">
+            <h3>MATLAB — Analyse de signaux</h3>
+            <p>Traitement et filtrage de signaux pour applications industrielles.</p>
+        </div>
+
+        <!-- PYTHON -->
+        <div class="project-card" data-category="python">
+            <img src="images/python.png" alt="Python Project">
+            <h3>Python — Automatisation</h3>
+            <p>Script d’automatisation pour traitement de données techniques.</p>
+        </div>
+
     </div>
 </section>
 
@@ -536,6 +656,26 @@
         document.body.classList.toggle('dark');
     }
 </script>
+<script>
+const filterButtons = document.querySelectorAll(".filter-btn");
+const cards = document.querySelectorAll(".project-card");
 
+filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        document.querySelector(".filter-btn.active").classList.remove("active");
+        btn.classList.add("active");
+
+        const category = btn.dataset.category;
+
+        cards.forEach(card => {
+            if (category === "all" || card.dataset.category === category) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
