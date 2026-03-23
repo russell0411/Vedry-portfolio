@@ -2,680 +2,870 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Portfolio – Russell Vedry Ngadjui</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Russell Vedry Ngadjui – Portfolio</title>
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
+        /* ------------------------------
+           GLOBAL VARIABLES (LIGHT + DARK)
+        ------------------------------ */
         :root {
-            --bg: #f0f2f5;
-            --card-bg: #ffffff;
-            --text: #333333;
-            --accent: #1a73e8;
-            --accent-dark: #155fc0;
-            --muted: #777777;
+            --bg: #f5f7fa;
+            --text: #1a1a1a;
+            --card: #ffffff;
+            --accent: #1e90ff;
+            --accent-dark: #0a66c2;
+            --muted: #6b7280;
+            --nav-bg: rgba(255,255,255,0.8);
         }
 
         body.dark {
             --bg: #0f172a;
-            --card-bg: #111827;
             --text: #e5e7eb;
+            --card: #1e293b;
             --accent: #3b82f6;
             --accent-dark: #2563eb;
             --muted: #9ca3af;
+            --nav-bg: rgba(15,23,42,0.8);
         }
 
+        /* ------------------------------
+           GLOBAL STYLES
+        ------------------------------ */
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
             background: var(--bg);
             color: var(--text);
-            transition: background 0.3s ease, color 0.3s ease;
+            transition: 0.3s ease;
+            scroll-behavior: smooth;
         }
 
-        .sidebar {
-            width: 300px;
-            background: var(--accent);
-            color: white;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            padding: 40px 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .sidebar img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid white;
-            margin-bottom: 20px;
-        }
-
-        .sidebar h1 {
-            font-size: 24px;
-            text-align: center;
-            margin: 0 0 10px 0;
-        }
-
-        .sidebar p {
-            margin: 4px 0;
-            font-size: 13px;
-            text-align: center;
-        }
-
-        .sidebar .small-muted {
-            font-size: 12px;
-            opacity: 0.9;
-        }
-
-        .download-btn, .toggle-btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 18px;
-            background: white;
-            color: var(--accent);
-            border-radius: 999px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.3s ease, color 0.3s ease;
-        }
-
-        .download-btn:hover, .toggle-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-
-        .toggle-btn {
-            margin-top: 10px;
-            background: transparent;
-            color: white;
-            border: 1px solid rgba(255,255,255,0.7);
-        }
-
-        .content {
-            margin-left: 340px;
-            padding: 40px 30px 60px 30px;
-            box-sizing: border-box;
+        section {
+            padding: 80px 10%;
+            max-width: 1400px;
+            margin: auto;
         }
 
         h2 {
-            color: var(--accent);
-            margin-top: 40px;
-            margin-bottom: 10px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 14px;
-            margin-top: 15px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-            animation: fadeInUp 0.4s ease;
-        }
-
-        .project-title {
-            font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-
-        .muted {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        .tag-row {
-            margin-top: 10px;
-        }
-
-        .tag {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: rgba(26,115,232,0.08);
-            color: var(--accent);
-            font-size: 11px;
-            margin-right: 6px;
-            margin-bottom: 4px;
-        }
-
-        body.dark .tag {
-            background: rgba(59,130,246,0.15);
-        }
-
-        footer {
-            margin-top: 60px;
+            font-size: 2.4rem;
             text-align: center;
-            color: var(--muted);
-            font-size: 12px;
+            margin-bottom: 40px;
+            color: var(--accent);
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* ------------------------------
+           NAVBAR
+        ------------------------------ */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 40px;
+            z-index: 1000;
+            transition: 0.3s ease;
+        }
+
+        nav .logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        /* ------------------------------
+           LANGUAGE SELECTOR (FLAGS)
+        ------------------------------ */
+        .lang-selector {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .lang-btn {
+            font-size: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.2);
+        }
+
+        /* ------------------------------
+           DARK MODE BUTTON
+        ------------------------------ */
+        .dark-toggle {
+            margin-left: 20px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .dark-toggle:hover {
+            transform: scale(1.2);
+        }
+
+        /* ------------------------------
+           MOBILE NAV
+        ------------------------------ */
+        .burger {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
         }
 
         @media (max-width: 900px) {
-            .sidebar {
-                position: relative;
-                width: 100%;
-                flex-direction: row;
-                justify-content: space-between;
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: var(--nav-bg);
+                flex-direction: column;
+                width: 200px;
                 padding: 20px;
+                border-radius: 10px;
             }
-            .sidebar img {
-                width: 70px;
-                height: 70px;
-                margin-bottom: 0;
+
+            nav ul.active {
+                display: flex;
             }
-            .sidebar h1 {
-                font-size: 18px;
-            }
-            .sidebar p {
-                font-size: 11px;
-            }
-            .content {
-                margin-left: 0;
-                padding: 20px 15px 40px 15px;
+
+            .burger {
+                display: block;
             }
         }
-        
-/* HERO SECTION */
-.hero {
-    height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: linear-gradient(135deg, #0A1A2F, #1E90FF);
-    color: white;
-    padding: 40px;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-
-.hero p {
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-    opacity: 0.9;
-}
-
-.hero-buttons .btn {
-    padding: 12px 25px;
-    margin: 0 10px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.btn.primary {
-    background: white;
-    color: #0A1A2F;
-}
-
-.btn.primary:hover {
-    background: #dfe6f0;
-}
-
-.btn.secondary {
-    border: 2px solid white;
-    color: white;
-}
-
-.btn.secondary:hover {
-    background: rgba(255,255,255,0.2);
-}
-
-        /* PROJECTS SECTION */
-.projects {
-    max-width: 1200px;
-    margin: 80px auto;
-    padding: 20px;
-    text-align: center;
-}
-
-.projects h2 {
-    font-size: 2.2rem;
-    margin-bottom: 40px;
-    color: #0A1A2F;
-}
-
-/* FILTRES */
-.project-filters {
-    margin-bottom: 30px;
-}
-
-.filter-btn {
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 8px;
-    border: none;
-    background: #e0e0e0;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.filter-btn.active,
-.filter-btn:hover {
-    background: #1E90FF;
-    color: white;
-}
-
-/* GRID */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-.project-card {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: 0.3s;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.project-card img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
     </style>
 </head>
 
 <body>
 
-    <!-- HERO SECTION -->
-<section class="hero">
-    <div class="hero-content">
-        <h1>Vedry — Mechanical Engineering Student</h1>
-        <p>Designing, simulating and optimizing mechanical systems with precision and passion.</p>
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">Vedry</div>
 
-        <div class="hero-buttons">
-            <a href="CV.pdf" class="btn primary">Télécharger CV</a>
-            <a href="#projects" class="btn secondary">Voir mes projets</a>
+    <ul id="nav-links">
+        <li><a href="#hero" data-i18n="nav_home">Startseite</a></li>
+        <li><a href="#about" data-i18n="nav_about">Über mich</a></li>
+        <li><a href="#projects" data-i18n="nav_projects">Projekte</a></li>
+        <li><a href="#skills" data-i18n="nav_skills">Kompetenzen</a></li>
+        <li><a href="#timeline" data-i18n="nav_timeline">Werdegang</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Kontakt</a></li>
+    </ul>
+
+    <div style="display:flex;align-items:center;">
+        <div class="lang-selector">
+            <span class="lang-btn" onclick="setLang('de')">🇩🇪</span>
+            <span class="lang-btn" onclick="setLang('fr')">🇫🇷</span>
+            <span class="lang-btn" onclick="setLang('en')">🇬🇧</span>
         </div>
+
+        <span class="dark-toggle" onclick="toggleDarkMode()">🌙</span>
+        <span class="burger" onclick="toggleMenu()">☰</span>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section id="hero">
+    <h1 data-i18n="hero_title">Hallo, ich bin Vedry</h1>
+    <p data-i18n="hero_subtitle">Maschinenbau · Elektrotechnik · Simulation · CAD</p>
+</section>
+
+    <!-- HERO SECTION (FULL WIDTH) -->
+<section id="hero" style="
+    padding-top:120px;
+    text-align:center;
+    background:linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color:white;
+    padding-bottom:120px;
+">
+    <h1 data-i18n="hero_title" style="font-size:3rem;margin-bottom:10px;">
+        Hallo, ich bin Vedry
+    </h1>
+
+    <p data-i18n="hero_subtitle" style="font-size:1.3rem;margin-bottom:30px;">
+        Maschinenbau · Elektrotechnik · Simulation · CAD
+    </p>
+
+    <a href="CV.pdf" download class="btn" style="
+        padding:12px 25px;
+        background:white;
+        color:var(--accent);
+        border-radius:8px;
+        font-weight:600;
+        text-decoration:none;
+        transition:0.3s;
+    " data-i18n="hero_cv">
+        📄 Lebenslauf herunterladen
+    </a>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about">
+    <h2 data-i18n="about_title">Über mich</h2>
+
+    <div style="
+        background:var(--card);
+        padding:30px;
+        border-radius:14px;
+        box-shadow:0 4px 14px rgba(0,0,0,0.08);
+        max-width:900px;
+        margin:auto;
+        font-size:1.1rem;
+        line-height:1.7;
+    " data-i18n="about_text">
+        Ich bin Maschinenbaustudent an der Hochschule Darmstadt mit starkem Interesse
+        an Elektrotechnik, Simulation, CAD und industrieller Antriebstechnik.
+        Ich arbeite strukturiert, sorgfältig und analytisch – und lerne extrem schnell.
+    </div>
+</section>
+
+<!-- SKILLS SECTION -->
+<section id="skills">
+    <h2 data-i18n="skills_title">Kompetenzen</h2>
+
+    <div style="
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+        gap:25px;
+    ">
+        <div class="skill-card" style="
+            background:var(--card);
+            padding:25px;
+            border-radius:12px;
+            box-shadow:0 4px 12px rgba(0,0,0,0.08);
+        ">
+            <h3 data-i18n="skill_cad_title">CAD / Konstruktion</h3>
+            <p data-i18n="skill_cad_text">SolidWorks, Fusion 360, CATIA</p>
+        </div>
+
+        <div class="skill-card" style="
+            background:var(--card);
+            padding:25px;
+            border-radius:12px;
+            box-shadow:0 4px 12px rgba(0,0,0,0.08);
+        ">
+            <h3 data-i18n="skill_sim_title">Simulation</h3>
+            <p data-i18n="skill_sim_text">ANSYS (FEM), MATLAB/Simulink</p>
+        </div>
+
+        <div class="skill-card" style="
+            background:var(--card);
+            padding:25px;
+            border-radius:12px;
+            box-shadow:0 4px 12px rgba(0,0,0,0.08);
+        ">
+            <h3 data-i18n="skill_prog_title">Programmierung</h3>
+            <p data-i18n="skill_prog_text">Python, MATLAB</p>
+        </div>
+
+        <div class="skill-card" style="
+            background:var(--card);
+            padding:25px;
+            border-radius:12px;
+            box-shadow:0 4px 12px rgba(0,0,0,0.08);
+        ">
+            <h3 data-i18n="skill_elec_title">Elektrotechnik</h3>
+            <p data-i18n="skill_elec_text">Elektrische Maschinen, Frequenzumrichter</p>
+        </div>
+    </div>
+</section>
+
+<!-- TECH STACK SECTION -->
+<section id="techstack">
+    <h2 data-i18n="tech_title">Tech Stack</h2>
+
+    <div style="
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:15px;
+    ">
+        <span class="tag">SolidWorks</span>
+        <span class="tag">Fusion 360</span>
+        <span class="tag">CATIA</span>
+        <span class="tag">ANSYS</span>
+        <span class="tag">MATLAB</span>
+        <span class="tag">Simulink</span>
+        <span class="tag">Python</span>
+        <span class="tag">Excel</span>
+        <span class="tag">PowerPoint</span>
     </div>
 </section>
 
     <!-- PROJECTS SECTION -->
-<section id="projects" class="projects">
-    <h2>My projects</h2>
+<section id="projects">
+    <h2 data-i18n="projects_title">Projekte</h2>
 
-    <!-- FILTRES / CATÉGORIES -->
-    <div class="project-filters">
-        <button class="filter-btn active" data-category="all">Tous</button>
-        <button class="filter-btn" data-category="cad">CAD / Conception</button>
-        <button class="filter-btn" data-category="ansys">Simulation ANSYS</button>
-        <button class="filter-btn" data-category="matlab">MATLAB / Simulink</button>
-        <button class="filter-btn" data-category="python">Python</button>
-    </div>
+    <div style="
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+        gap:30px;
+    ">
 
-    <div class="project-grid">
+        <!-- PROJECT 1 -->
+        <div class="project-card" style="
+            background:var(--card);
+            padding:20px;
+            border-radius:14px;
+            box-shadow:0 4px 14px rgba(0,0,0,0.08);
+            transition:0.3s;
+        ">
+            <img src="images/ansys_mesh.png" alt="ANSYS Mesh" style="
+                width:100%;
+                border-radius:10px;
+                margin-bottom:15px;
+            ">
 
-        <!-- PROJETS CAD -->
-        <div class="project-card" data-category="cad">
-            <img src="images/cad1.png" alt="CAD Project">
-            <h3>Modélisation 3D — SolidWorks</h3>
-            <p>Conception d’un support mécanique complet avec assemblage et mise en plan.</p>
+            <h3 data-i18n="proj1_title">Simulation einer Asynchronmaschine</h3>
+            <p data-i18n="proj1_desc">
+                FEM-Analyse, Drehmomentkurven, thermische Belastung, Frequenzumrichterbetrieb.
+            </p>
+
+            <div class="tag-row">
+                <span class="tag">ANSYS</span>
+                <span class="tag">FEM</span>
+                <span class="tag">Elektromotoren</span>
+            </div>
+
+            <div style="margin-top:15px;">
+                <a href="#" class="btn" style="
+                    padding:8px 15px;
+                    background:var(--accent);
+                    color:white;
+                    border-radius:8px;
+                    text-decoration:none;
+                    margin-right:10px;
+                " data-i18n="btn_code">Code</a>
+
+                <a href="#" class="btn" style="
+                    padding:8px 15px;
+                    background:var(--accent-dark);
+                    color:white;
+                    border-radius:8px;
+                    text-decoration:none;
+                " data-i18n="btn_demo">Demo</a>
+            </div>
         </div>
 
-        <div class="project-card" data-category="cad">
-            <img src="images/cad2.png" alt="CAD Project 2">
-            <h3>Fusion 360 — Mécanisme articulé</h3>
-            <p>Étude cinématique et modélisation d’un mécanisme articulé.</p>
+        <!-- PROJECT 2 -->
+        <div class="project-card" style="
+            background:var(--card);
+            padding:20px;
+            border-radius:14px;
+            box-shadow:0 4px 14px rgba(0,0,0,0.08);
+            transition:0.3s;
+        ">
+            <img src="images/cad1.png" alt="CAD Assembly" style="
+                width:100%;
+                border-radius:10px;
+                margin-bottom:15px;
+            ">
+
+            <h3 data-i18n="proj2_title">CAD-Baugruppe – Koppelgetriebe</h3>
+            <p data-i18n="proj2_desc">
+                Erstellung aller Teile, technische Zeichnungen, Zusammenbau mit Normteilen.
+            </p>
+
+            <div class="tag-row">
+                <span class="tag">SolidWorks</span>
+                <span class="tag">Fusion 360</span>
+                <span class="tag">Mechanik</span>
+            </div>
+
+            <div style="margin-top:15px;">
+                <a href="#" class="btn" style="
+                    padding:8px 15px;
+                    background:var(--accent);
+                    color:white;
+                    border-radius:8px;
+                    text-decoration:none;
+                    margin-right:10px;
+                " data-i18n="btn_code">Code</a>
+
+                <a href="#" class="btn" style="
+                    padding:8px 15px;
+                    background:var(--accent-dark);
+                    color:white;
+                    border-radius:8px;
+                    text-decoration:none;
+                " data-i18n="btn_demo">Demo</a>
+            </div>
         </div>
 
-        <!-- PROJETS ANSYS -->
-        <div class="project-card" data-category="ansys">
-            <img src="images/amsys_mesh.png" alt="Mesh ANSYS">
-            <h3>Simulation ANSYS — Maillage</h3>
-            <p>Analyse du maillage pour garantir une précision optimale.</p>
-        </div>
+        <!-- PROJECT 3 -->
+        <div class="project-card" style="
+            background:var(--card);
+            padding:20px;
+            border-radius:14px;
+            box-shadow:0 4px 14px rgba(0,0,0,0.08);
+            transition:0.3s;
+        ">
+            <img src="images/matlab_project.png" alt="MATLAB Signals" style="
+                width:100%;
+                border-radius:10px;
+                margin-bottom:15px;
+            ">
 
-        <div class="project-card" data-category="ansys">
-            <img src="images/amsys_max_stress.png" alt="Max Stress">
-            <h3>Simulation ANSYS — Contrainte maximale</h3>
-            <p>Étude des zones critiques et optimisation de la géométrie.</p>
-        </div>
+            <h3 data-i18n="proj3_title">MATLAB – Signalverarbeitung</h3>
+            <p data-i18n="proj3_desc">
+                Filterung, FFT, Analyse industrieller Messdaten.
+            </p>
 
-        <!-- MATLAB -->
-        <div class="project-card" data-category="matlab">
-            <img src="images/matlab.png" alt="MATLAB Project">
-            <h3>MATLAB — Analyse de signaux</h3>
-            <p>Traitement et filtrage de signaux pour applications industrielles.</p>
-        </div>
+            <div class="tag-row">
+                <span class="tag">MATLAB</span>
+                <span class="tag">Simulink</span>
+                <span class="tag">Signalverarbeitung</span>
+            </div>
 
-        <!-- PYTHON -->
-        <div class="project-card" data-category="python">
-            <img src="images/python.png" alt="Python Project">
-            <h3>Python — Automatisation</h3>
-            <p>Script d’automatisation pour traitement de données techniques.</p>
+            <div style="margin-top:15px;">
+                <a href="#" class="btn" style="
+                    padding:8px 15px;
+                    background:var(--accent);
+                    color:white;
+                    border-radius:8px;
+                    text-decoration:none;
+                    margin-right:10px;
+                " data-i18n="btn_code">Code</a>
+
+                <a href="#" class="btn" style="
+                    padding:8px 15px;
+                    background:var(--accent-dark);
+                    color:white;
+                    border-radius:8px;
+                    text-decoration:none;
+                " data-i18n="btn_demo">Demo</a>
+            </div>
         </div>
 
     </div>
 </section>
 
-<div class="sidebar">
-    <!-- Remplace l'URL ci-dessous par le lien de ta vraie photo -->
-    <img src="https://via.placeholder.com/140" alt="Profilfoto">
+<!-- TIMELINE SECTION -->
+<section id="timeline">
+    <h2 data-i18n="timeline_title">Werdegang</h2>
 
-    <div style="text-align:center;">
-        <h1>Russell Vedry<br>Ngadjui Tchualeu</h1>
-        <p><strong>Werkstudent Maschinenbau</strong></p>
-        <p class="small-muted">Elektrotechnik · CAD · Qualitätsprüfung</p>
-        <p>Darmstadt, Deutschland</p>
-        <p>Email: <strong>russell.ngadjui@yahoo.com</strong></p>
-        <p>LinkedIn: <strong>https://www.linkedin.com/in/russell-vedry-ngadjui-tchualeu-b87748301</strong></p>
-    </div>
+    <div style="
+        max-width:900px;
+        margin:auto;
+        border-left:3px solid var(--accent);
+        padding-left:25px;
+    ">
 
-    <a class="download-btn" href="CV.pdf" download>📄 CV herunterladen</a>
-    <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark / Light</button>
-</div>
-
-<div class="content">
-
-    <h2>Über mich</h2>
-    <div class="card">
-        <p>
-            Maschinenbaustudent im 4. Semester an der Hochschule Darmstadt mit Erfahrung in CAD, 
-            Elektrotechnik, Qualitätsprüfung und Laborversuchen an elektrischen Maschinen.
-            Sorgfältig, strukturiert und lernbereit, mit großem Interesse an Elektromotoren 
-            und industrieller Antriebstechnik.
-        </p>
-        <div class="tag-row">
-            <span class="tag">Maschinenbau</span>
-            <span class="tag">Elektrotechnik</span>
-            <span class="tag">Qualität</span>
-            <span class="tag">Werkstudent</span>
+        <!-- ITEM 1 -->
+        <div style="margin-bottom:40px;">
+            <h3 data-i18n="timeline_item1_title">Volkswagen – Qualitätsprüfer</h3>
+            <p class="muted" data-i18n="timeline_item1_date">04/2024 – 06/2024 · Braunschweig</p>
+            <p data-i18n="timeline_item1_desc">
+                Qualitätskontrolle, Prozessabweichungen erkennen, Bauteilprüfung im Schichtbetrieb.
+            </p>
         </div>
+
+        <!-- ITEM 2 -->
+        <div style="margin-bottom:40px;">
+            <h3 data-i18n="timeline_item2_title">Maui Jim – Qualitätskontrolle</h3>
+            <p class="muted" data-i18n="timeline_item2_date">05/2024 – 06/2024 · Braunschweig</p>
+            <p data-i18n="timeline_item2_desc">
+                Prüfung von Brillenkomponenten, Arbeiten nach klaren Vorgaben, präzise Dokumentation.
+            </p>
+        </div>
+
+        <!-- ITEM 3 -->
+        <div style="margin-bottom:40px;">
+            <h3 data-i18n="timeline_item3_title">CFMI – Industrielle Fertigung</h3>
+            <p class="muted" data-i18n="timeline_item3_date">2023 · Douala</p>
+            <p data-i18n="timeline_item3_desc">
+                Mechanische Fertigung, Schweißen, Drehen, technische Zeichnungen, Montage.
+            </p>
+        </div>
+
+        <!-- ITEM 4 -->
+        <div style="margin-bottom:40px;">
+            <h3 data-i18n="timeline_item4_title">Hochschule Darmstadt – Maschinenbau</h3>
+            <p class="muted" data-i18n="timeline_item4_date">2022 – heute · Darmstadt</p>
+            <p data-i18n="timeline_item4_desc">
+                Elektrotechnik, CAD, Simulation, Laborversuche an elektrischen Maschinen.
+            </p>
+        </div>
+
     </div>
+</section>
 
-    <h2>Berufserfahrung</h2>
+<!-- CONTACT SECTION -->
+<section id="contact">
+    <h2 data-i18n="contact_title">Kontakt</h2>
 
-<!-- Qualität & Industrie -->
-<div class="card">
-    <p class="project-title">Qualitätsprüfer – Volkswagen</p>
-    <p class="muted">Apr. 2024 – Juni 2024 · Braunschweig · Vor Ort</p>
-    <p>
-        Sichtkontrolle verschiedener Autoteile (Hilfsrahmen, Module, Batterien, Schrauben),
-        Fehleranalyse und Dokumentation im Qualitätsmanagement. Arbeiten nach klaren Prüf- und
-        Fertigungsrichtlinien sowie Sicherstellung der Bauteilqualität im Schichtbetrieb.
-    </p>
-</div>
+    <div style="
+        max-width:700px;
+        margin:auto;
+        background:var(--card);
+        padding:30px;
+        border-radius:14px;
+        box-shadow:0 4px 14px rgba(0,0,0,0.08);
+    ">
+        <form>
+            <label data-i18n="contact_name">Name</label>
+            <input type="text" style="
+                width:100%;
+                padding:12px;
+                margin:10px 0 20px 0;
+                border-radius:8px;
+                border:1px solid var(--muted);
+                background:var(--bg);
+                color:var(--text);
+            ">
 
-<div class="card">
-    <p class="project-title">Qualitätskontrolleur – Maui Jim Sunglasses</p>
-    <p class="muted">Mai 2024 – Juni 2024 · Braunschweig · Vor Ort</p>
-    <p>
-        Sicht- und Funktionsprüfung von Brillenkomponenten, Dokumentation von Qualitätsabweichungen
-        und Einhaltung von Qualitäts- und Prozessstandards.
-    </p>
-</div>
+            <label data-i18n="contact_email">E-Mail</label>
+            <input type="email" style="
+                width:100%;
+                padding:12px;
+                margin:10px 0 20px 0;
+                border-radius:8px;
+                border:1px solid var(--muted);
+                background:var(--bg);
+                color:var(--text);
+            ">
 
-<!-- Technische Logistik & Materialfluss -->
-<div class="card">
-    <p class="project-title">Lagerhelfer – GVO Personal (AutoStore / Astro WMS)</p>
-    <p class="muted">Okt. 2025 – Heute · Raunheim · Vor Ort</p>
-    <p>
-        Einlagerung und Kommissionierung im automatisierten AutoStore-System, Arbeiten mit dem
-        Warehouse-Management-System <strong>Astro WMS</strong>, Sicherstellung eines effizienten
-        Materialflusses und Unterstützung im technischen Logistikbetrieb.
-    </p>
-</div>
+            <label data-i18n="contact_message">Nachricht</label>
+            <textarea style="
+                width:100%;
+                padding:12px;
+                height:120px;
+                margin:10px 0 20px 0;
+                border-radius:8px;
+                border:1px solid var(--muted);
+                background:var(--bg);
+                color:var(--text);
+            "></textarea>
 
-<div class="card">
-    <p class="project-title">Lagerhelfer – Volkswagen (Wareneingang)</p>
-    <p class="muted">Juni 2025 – Feb. 2026 · Dieburg · Vor Ort</p>
-    <p>
-        Einbuchung und Kontrolle eingehender Lieferungen, Dokumentation von Materialbewegungen
-        und Unterstützung im logistischen Tagesgeschäft eines Industriebetriebs.
-    </p>
-</div>
-
-<div class="card">
-    <p class="project-title">Kommissionierer – Transgourmet Deutschland</p>
-    <p class="muted">Juli 2025 – Aug. 2025 · Riedstadt · Vor Ort</p>
-    <p>
-        Kommissionieren von Waren entsprechend Kundenaufträgen, Vorbereitung der Bestellungen
-        für den Versand sowie Einhaltung von Qualitäts- und Hygienestandards.
-    </p>
-</div>
-
-<div class="card">
-    <p class="project-title">Lagerhelfer – LOGOSYS Logistik (Pharma)</p>
-    <p class="muted">März 2025 – Apr. 2025 · Darmstadt · Vor Ort</p>
-    <p>
-        Kommissionieren von Medikamenten ohne Scanner gemäß Aufträgen, Verpacken und Vorbereitung
-        der Waren für die Auslieferung sowie Unterstützung im pharmazeutischen Logistikbereich.
-    </p>
-</div>
-
-<!-- Mechanische Fertigung & Maschinenbau (Praktikum) -->
-<div class="card">
-    <p class="project-title">Praktikant – CFMI (Construction Fabrication Maintenance Industrielle)</p>
-    <p class="muted">Juni 2019 – Aug. 2019 · Vor Ort</p>
-    <p>
-        Mitarbeit in der mechanischen Fertigung (Bohren, Fräsen, Schweißen), Unterstützung bei der
-        Montage und Instandhaltung von Industrieanlagen, Erstellung technischer Zeichnungen mit
-        <strong>AutoCAD Mechanical</strong> sowie Arbeiten nach technischen Vorgaben und Sicherheitsstandards.
-    </p>
-</div>
-
-    <h2>Projekte / Projects</h2>
-
-<!-- DC Motor Position Control -->
-<div class="card">
-    <p class="project-title">DC Motor Position Control</p>
-    <p class="muted">MATLAB & Simulink · 2026</p>
-    <p>
-        Modellierung und Positionsregelung eines Gleichstrommotors in MATLAB/Simulink.
-        Aufbau eines vollständigen elektromechanischen Modells, Implementierung eines PID-Reglers
-        und Analyse des stationären und transienten Verhaltens unter verschiedenen Lastbedingungen.
-    </p>
-    <p class="muted"><em>Nachweis / Proof: wird später hinzugefügt</em></p>
-</div>
-
-<!-- PID Controller Design -->
-<div class="card">
-    <p class="project-title">PID Controller Design and Tuning</p>
-    <p class="muted">MATLAB & Simulink · 2026</p>
-    <p>
-        Entwurf, Implementierung und Optimierung eines PID-Reglers. Vergleich verschiedener
-        Tuning-Methoden, Analyse von Stabilität, Überschwingen und Einschwingzeit.
-    </p>
-    <p class="muted"><em>Nachweis / Proof: wird später hinzugefügt</em></p>
-</div>
-
-<!-- Asynchronmaschine -->
-<div class="card">
-    <p class="project-title">Laborversuch Asynchronmaschine</p>
-    <p class="muted">Hochschule Darmstadt · 2025–2026</p>
-    <p>
-        Untersuchung von Drehzahl-Drehmoment-Kennlinien, Wirk- und Blindleistung,
-        Frequenzumrichterbetrieb und Maschinenverhalten unter verschiedenen Lastbedingungen.
-    </p>
-    <p class="muted"><em>Nachweis / Proof: wird später hinzugefügt</em></p>
-</div>
-
-<!-- Gleichstrommaschine -->
-<div class="card">
-    <p class="project-title">Laborversuch Gleichstrommaschine</p>
-    <p class="muted">Hochschule Darmstadt · 2025–2026</p>
-    <p>
-        Aufnahme von Leerlauf-, Betriebs- und mechanischen Kennlinien. Untersuchung des Einflusses
-        von Feldstrom, Ankerspannung und Lastmoment auf Drehzahl und Drehmoment.
-    </p>
-    <p class="muted"><em>Nachweis / Proof: wird später hinzugefügt</em></p>
-</div>
-
-<!-- CAD Koppelgetriebe -->
-<div class="card">
-    <p class="project-title">CAD-Baugruppe Koppelgetriebe</p>
-    <p class="muted">Fusion 360 / SolidWorks · 2025</p>
-    <p>
-        Modellierung aller Einzelteile anhand einer Stückliste, Zusammenbau mit Normteilen,
-        Überprüfung von Passungen und Bewegungsfreiheit.
-    </p>
-    <p class="muted"><em>Nachweis / Proof: wird später hinzugefügt</em></p>
-</div>
-
-<!-- FEM Lagerbock -->
-<div class="card">
-    <p class="project-title">FEM-Analyse Lagerbock (EN-GJL-250)</p>
-    <p class="muted">ANSYS Workbench · 2025</p>
-    <p>
-        Finite-Elemente-Analyse eines Lagerbocks: Netzgenerierung, Randbedingungen,
-        Lastfälle, Spannungs- und Verformungsanalyse, Sicherheitsfaktoren.
-    </p>
-
-    <!-- CSS intégré pour les preuves -->
-    <style>
-        .proof-img {
-            width: 100%;
-            border-radius: 8px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            box-shadow: 0 0 8px rgba(0,0,0,0.15);
-        }
-    </style>
-
-    <!-- Preuves ANSYS -->
-    <img src="images/ansys_force.png" class="proof-img" alt="ANSYS – Externe Kraft">
-    <img src="images/ansys_max_stress.png" class="proof-img" alt="ANSYS – Max Hauptspannung">
-    <img src="images/ansys_min_stress.png" class="proof-img" alt="ANSYS – Minimale Hauptspannung">
-    <img src="images/ansys_mesh.png" class="proof-img" alt="ANSYS – Netz und Modell">
-    <img src="images/ansys_refinement.png" class="proof-img" alt="ANSYS – Netzverfeinerung">
-</div>
-
-<!-- CAD Handhebelpresse -->
-<div class="card">
-    <p class="project-title">CAD-Baugruppe Handhebelpresse</p>
-    <p class="muted">Fusion 360 / SolidWorks · 2025</p>
-    <p>
-        Modellierung aller Einzelteile, Integration von Normteilen, Aufbau der vollständigen
-        Baugruppe und Funktionsprüfung.
-    </p>
-    <p class="muted"><em>Nachweis / Proof: wird später hinzugefügt</em></p>
-</div>
-
-<h2>Bescheinigungen & Zertifikate / Certificates</h2>
-
-<div class="card">
-    <p class="project-title">MathWorks – MATLAB & Simulink</p>
-    <ul>
-        <li>MATLAB Onramp – in Bearbeitung</li>
-        <li>Simulink Onramp – in Bearbeitung</li>
-        <li>Machine Learning Onramp – in Bearbeitung</li>
-    </ul>
-
-    <p class="project-title" style="margin-top:15px;">Udemy</p>
-    <ul>
-        <li>MATLAB Basics and Programming – <strong>abgeschlossen</strong></li>
-        <li>Python for Data Science and Machine Learning Bootcamp – in Bearbeitung</li>
-        <li>MATLAB/Simulink Bible – in Bearbeitung</li>
-    </ul>
-
-    <p class="project-title" style="margin-top:15px;">Hochschule Darmstadt</p>
-    <ul>
-        <li>Laborversuch Asynchronmaschine</li>
-        <li>Laborversuch Gleichstrommaschine</li>
-        <li>Laborversuch Regelungstechnik (falls zutreffend)</li>
-    </ul>
-
-    <p class="muted"><em>Nachweise / Proofs: werden später hinzugefügt</em></p>
-</div>
-
-    <h2>Kenntnisse</h2>
-    <div class="card">
-        <p><strong>CAD:</strong> SolidWorks, Fusion 360, Catia</p>
-        <p><strong>FEM:</strong> Ansys (Grundlagen)</p>
-        <p><strong>Programmierung:</strong> MATLAB/Simulink (Grundlagen), Python (Grundlagen)</p>
-        <p><strong>IT:</strong> Microsoft Word, Excel, PowerPoint</p>
-        <p><strong>Soft Skills:</strong> Analytisches Denkvermögen, technisches Verständnis, selbständige, strukturierte und sorgfältige Arbeitsweise.</p>
+            <button type="submit" style="
+                padding:12px 25px;
+                background:var(--accent);
+                color:white;
+                border:none;
+                border-radius:8px;
+                font-weight:600;
+                cursor:pointer;
+                transition:0.3s;
+            " data-i18n="contact_send">
+                Senden
+            </button>
+        </form>
     </div>
+</section>
 
-    <h2>Stärken & Schwächen</h2>
-    <div class="card">
-        <p class="project-title">Stärken</p>
-        <ul>
-            <li>Sehr schnelle Auffassungsgabe</li>
-            <li>Hohe Anpassungsfähigkeit</li>
-            <li>Strukturierte, analytische und sorgfältige Arbeitsweise</li>
-        </ul>
-        <p class="project-title" style="margin-top:10px;">Schwäche</p>
-        <p>Ich neige manchmal dazu, meine eigenen Fähigkeiten zu unterschätzen – arbeite jedoch aktiv daran, mein Selbstvertrauen zu stärken und Verantwortung zu übernehmen.</p>
-    </div>
+<!-- FOOTER -->
+<footer style="
+    text-align:center;
+    padding:25px;
+    background:var(--accent-dark);
+    color:white;
+    margin-top:60px;
+">
+    © 2026 – Vedry · Portfolio
+</footer>
 
-    <h2>Ziele & Motivation</h2>
-    <div class="card">
-        <p>
-            Perspektivisch strebe ich einen Master im Bereich Wirtschaftsingenieurwesen mit Vertiefung Elektrotechnik 
-            oder im Bereich Elektrische Energietechnik an. 
-            Daher ist es mir wichtig, bereits jetzt praktische Erfahrungen im elektrotechnischen Umfeld zu sammeln, 
-            insbesondere im Bereich Elektromotoren und industrieller Antriebstechnik.
-        </p>
-    </div>
-
-    <h2>Kontakt</h2>
-    <div class="card">
-        <p>Email: <strong>russell.ngadjui@yahoo.com</strong></p>
-        <p>LinkedIn: <strong>Dein Profil-Link hier</strong></p>
-        <p>Ort: Darmstadt, Deutschland</p>
-    </div>
-
-    <footer>
-        © 2026 – Portfolio von Russell Vedry Ngadjui
-    </footer>
-
+<!-- BACK TO TOP BUTTON -->
+<div id="backToTop" onclick="scrollToTop()" style="
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:var(--accent);
+    color:white;
+    padding:12px 15px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:20px;
+    display:none;
+    transition:0.3s;
+">
+    ↑
 </div>
 
-<script>
-    function toggleDarkMode() {
-        document.body.classList.toggle('dark');
+    <script>
+/* ============================================================
+   🌐 MULTILINGUE — FR / EN / DE
+   ============================================================ */
+
+const translations = {
+    de: {
+        nav_home: "Startseite",
+        nav_about: "Über mich",
+        nav_projects: "Projekte",
+        nav_skills: "Kompetenzen",
+        nav_timeline: "Werdegang",
+        nav_contact: "Kontakt",
+
+        hero_title: "Hallo, ich bin Vedry",
+        hero_subtitle: "Maschinenbau · Elektrotechnik · Simulation · CAD",
+        hero_cv: "📄 Lebenslauf herunterladen",
+
+        about_title: "Über mich",
+        about_text:
+            "Ich bin Maschinenbaustudent an der Hochschule Darmstadt mit starkem Interesse an Elektrotechnik, Simulation, CAD und industrieller Antriebstechnik. Ich arbeite strukturiert, sorgfältig und analytisch – und lerne extrem schnell.",
+
+        skills_title: "Kompetenzen",
+        skill_cad_title: "CAD / Konstruktion",
+        skill_cad_text: "SolidWorks, Fusion 360, CATIA",
+        skill_sim_title: "Simulation",
+        skill_sim_text: "ANSYS (FEM), MATLAB/Simulink",
+        skill_prog_title: "Programmierung",
+        skill_prog_text: "Python, MATLAB",
+        skill_elec_title: "Elektrotechnik",
+        skill_elec_text: "Elektrische Maschinen, Frequenzumrichter",
+
+        tech_title: "Tech Stack",
+
+        projects_title: "Projekte",
+        proj1_title: "Simulation einer Asynchronmaschine",
+        proj1_desc: "FEM-Analyse, Drehmomentkurven, thermische Belastung, Frequenzumrichterbetrieb.",
+        proj2_title: "CAD-Baugruppe – Koppelgetriebe",
+        proj2_desc: "Erstellung aller Teile, technische Zeichnungen, Zusammenbau mit Normteilen.",
+        proj3_title: "MATLAB – Signalverarbeitung",
+        proj3_desc: "Filterung, FFT, Analyse industrieller Messdaten.",
+
+        btn_code: "Code",
+        btn_demo: "Demo",
+
+        timeline_title: "Werdegang",
+        timeline_item1_title: "Volkswagen – Qualitätsprüfer",
+        timeline_item1_date: "04/2024 – 06/2024 · Braunschweig",
+        timeline_item1_desc: "Qualitätskontrolle, Prozessabweichungen erkennen, Bauteilprüfung im Schichtbetrieb.",
+
+        timeline_item2_title: "Maui Jim – Qualitätskontrolle",
+        timeline_item2_date: "05/2024 – 06/2024 · Braunschweig",
+        timeline_item2_desc: "Prüfung von Brillenkomponenten, Arbeiten nach klaren Vorgaben, präzise Dokumentation.",
+
+        timeline_item3_title: "CFMI – Industrielle Fertigung",
+        timeline_item3_date: "2023 · Douala",
+        timeline_item3_desc: "Mechanische Fertigung, Schweißen, Drehen, technische Zeichnungen, Montage.",
+
+        timeline_item4_title: "Hochschule Darmstadt – Maschinenbau",
+        timeline_item4_date: "2022 – heute · Darmstadt",
+        timeline_item4_desc: "Elektrotechnik, CAD, Simulation, Laborversuche an elektrischen Maschinen.",
+
+        contact_title: "Kontakt",
+        contact_name: "Name",
+        contact_email: "E-Mail",
+        contact_message: "Nachricht",
+        contact_send: "Senden",
+    },
+
+    fr: {
+        nav_home: "Accueil",
+        nav_about: "À propos",
+        nav_projects: "Projets",
+        nav_skills: "Compétences",
+        nav_timeline: "Parcours",
+        nav_contact: "Contact",
+
+        hero_title: "Bonjour, je suis Vedry",
+        hero_subtitle: "Génie mécanique · Électrotechnique · Simulation · CAO",
+        hero_cv: "📄 Télécharger le CV",
+
+        about_title: "À propos de moi",
+        about_text:
+            "Je suis étudiant en génie mécanique à la Hochschule Darmstadt, passionné par l’électrotechnique, la simulation, la CAO et les systèmes d’entraînement industriels. Je travaille de manière structurée, précise et analytique, et j’apprends très vite.",
+
+        skills_title: "Compétences",
+        skill_cad_title: "CAO / Conception",
+        skill_cad_text: "SolidWorks, Fusion 360, CATIA",
+        skill_sim_title: "Simulation",
+        skill_sim_text: "ANSYS (FEM), MATLAB/Simulink",
+        skill_prog_title: "Programmation",
+        skill_prog_text: "Python, MATLAB",
+        skill_elec_title: "Électrotechnique",
+        skill_elec_text: "Machines électriques, variateurs de fréquence",
+
+        tech_title: "Tech Stack",
+
+        projects_title: "Projets",
+        proj1_title: "Simulation d’une machine asynchrone",
+        proj1_desc: "Analyse FEM, courbes de couple, contraintes thermiques, variateur de fréquence.",
+        proj2_title: "Assemblage CAO – Mécanisme à bielle",
+        proj2_desc: "Modélisation complète, plans techniques, assemblage avec pièces normalisées.",
+        proj3_title: "MATLAB – Traitement du signal",
+        proj3_desc: "Filtrage, FFT, analyse de données industrielles.",
+
+        btn_code: "Code",
+        btn_demo: "Démo",
+
+        timeline_title: "Parcours",
+        timeline_item1_title: "Volkswagen – Contrôle qualité",
+        timeline_item1_date: "04/2024 – 06/2024 · Braunschweig",
+        timeline_item1_desc: "Contrôle qualité, détection d’écarts, inspection en production.",
+
+        timeline_item2_title: "Maui Jim – Contrôle qualité",
+        timeline_item2_date: "05/2024 – 06/2024 · Braunschweig",
+        timeline_item2_desc: "Inspection de composants, respect des procédures, documentation précise.",
+
+        timeline_item3_title: "CFMI – Fabrication industrielle",
+        timeline_item3_date: "2023 · Douala",
+        timeline_item3_desc: "Fabrication mécanique, soudure, tournage, plans techniques, montage.",
+
+        timeline_item4_title: "Hochschule Darmstadt – Génie mécanique",
+        timeline_item4_date: "2022 – aujourd’hui · Darmstadt",
+        timeline_item4_desc: "Électrotechnique, CAO, simulation, essais sur machines électriques.",
+
+        contact_title: "Contact",
+        contact_name: "Nom",
+        contact_email: "Email",
+        contact_message: "Message",
+        contact_send: "Envoyer",
+    },
+
+    en: {
+        nav_home: "Home",
+        nav_about: "About",
+        nav_projects: "Projects",
+        nav_skills: "Skills",
+        nav_timeline: "Timeline",
+        nav_contact: "Contact",
+
+        hero_title: "Hi, I'm Vedry",
+        hero_subtitle: "Mechanical Engineering · Electrical Engineering · Simulation · CAD",
+        hero_cv: "📄 Download CV",
+
+        about_title: "About Me",
+        about_text:
+            "I am a Mechanical Engineering student at Hochschule Darmstadt with strong interest in electrical engineering, simulation, CAD, and industrial drive systems. I work in a structured, precise, and analytical way, and I learn extremely fast.",
+
+        skills_title: "Skills",
+        skill_cad_title: "CAD / Design",
+        skill_cad_text: "SolidWorks, Fusion 360, CATIA",
+        skill_sim_title: "Simulation",
+        skill_sim_text: "ANSYS (FEM), MATLAB/Simulink",
+        skill_prog_title: "Programming",
+        skill_prog_text: "Python, MATLAB",
+        skill_elec_title: "Electrical Engineering",
+        skill_elec_text: "Electric machines, frequency converters",
+
+        tech_title: "Tech Stack",
+
+        projects_title: "Projects",
+        proj1_title: "Asynchronous Machine Simulation",
+        proj1_desc: "FEM analysis, torque curves, thermal stress, inverter operation.",
+        proj2_title: "CAD Assembly – Linkage Mechanism",
+        proj2_desc: "Full modeling, technical drawings, assembly with standard parts.",
+        proj3_title: "MATLAB – Signal Processing",
+        proj3_desc: "Filtering, FFT, industrial data analysis.",
+
+        btn_code: "Code",
+        btn_demo: "Demo",
+
+        timeline_title: "Timeline",
+        timeline_item1_title: "Volkswagen – Quality Inspector",
+        timeline_item1_date: "04/2024 – 06/2024 · Braunschweig",
+        timeline_item1_desc: "Quality inspection, deviation detection, production line checks.",
+
+        timeline_item2_title: "Maui Jim – Quality Control",
+        timeline_item2_date: "05/2024 – 06/2024 · Braunschweig",
+        timeline_item2_desc: "Component inspection, procedure compliance, precise documentation.",
+
+        timeline_item3_title: "CFMI – Industrial Manufacturing",
+        timeline_item3_date: "2023 · Douala",
+        timeline_item3_desc: "Mechanical fabrication, welding, turning, technical drawings, assembly.",
+
+        timeline_item4_title: "Hochschule Darmstadt – Mechanical Engineering",
+        timeline_item4_date: "2022 – present · Darmstadt",
+        timeline_item4_desc: "Electrical engineering, CAD, simulation, electric machine labs.",
+
+        contact_title: "Contact",
+        contact_name: "Name",
+        contact_email: "Email",
+        contact_message: "Message",
+        contact_send: "Send",
     }
-</script>
-<script>
-const filterButtons = document.querySelectorAll(".filter-btn");
-const cards = document.querySelectorAll(".project-card");
+};
 
-filterButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-        document.querySelector(".filter-btn.active").classList.remove("active");
-        btn.classList.add("active");
-
-        const category = btn.dataset.category;
-
-        cards.forEach(card => {
-            if (category === "all" || card.dataset.category === category) {
-                card.style.display = "block";
-            } else {
-                card.style.display = "none";
-            }
-        });
+/* APPLY LANGUAGE */
+function setLang(lang) {
+    localStorage.setItem("lang", lang);
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        el.innerHTML = translations[lang][el.dataset.i18n];
     });
+}
+
+/* LOAD SAVED LANGUAGE */
+const savedLang = localStorage.getItem("lang") || "de";
+setLang(savedLang);
+
+/* ============================================================
+   🌙 DARK MODE
+   ============================================================ */
+function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("darkmode", document.body.classList.contains("dark"));
+}
+
+if (localStorage.getItem("darkmode") === "true") {
+    document.body.classList.add("dark");
+}
+
+/* ============================================================
+   ☰ BURGER MENU
+   ============================================================ */
+function toggleMenu() {
+    document.getElementById("nav-links").classList.toggle("active");
+}
+
+/* ============================================================
+   ↑ BACK TO TOP BUTTON
+   ============================================================ */
+window.onscroll = function () {
+    const btn = document.getElementById("backToTop");
+    btn.style.display = window.scrollY > 300 ? "block" : "none";
+};
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* ============================================================
+   🎬 ANIMATIONS AU SCROLL
+   ============================================================ */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+        }
+    });
+}, { threshold: 0.2 });
+
+document.querySelectorAll("section, .project-card, .skill-card").forEach(el => {
+    el.style.opacity = 0;
+    el.style.transform = "translateY(20px)";
+    el.style.transition = "0.6s ease";
+    observer.observe(el);
 });
 </script>
-</body>
-</html>
+
+    
